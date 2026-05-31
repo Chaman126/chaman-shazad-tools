@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>Secure PDF to Word Converter Online - 100% Private | Chaman Shazad Tools</title>
+    <meta name="description" content="Convert PDF to Word online free. Safe and completely client-side. No email signup, no file limits, and your documents never upload to a server. Edit PDF in DOCX format now.">
+    <link rel="canonical" href="pdf-to-word.html">
+    
+    <!-- Open Graph & Twitter Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="pdf-to-word.html">
+    <meta property="og:title" content="Secure PDF to Word Converter Online - 100% Private">
+    <meta property="og:description" content="Convert PDF to Word online free. Safe and completely client-side. No email signup, no file limits, and your documents never upload to a server.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop">
+    <meta property="twitter:card" content="summary_large_image">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- PDF.js CDN for client-side reading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-link" id="siteLogo">
+                <div class="logo-icon">CS</div>
+                <span>Chaman Shazad Tools</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-navigation" id="mainNavigation">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="pdf-to-word.html" class="nav-link active">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html" class="nav-link">Word to PDF</a></li>
+                    <li><a href="compress-pdf.html" class="nav-link">Compress PDF</a></li>
+                    <li><a href="merge-pdf.html" class="nav-link">Merge PDF</a></li>
+                    <li><a href="jpg-to-pdf.html" class="nav-link">JPG to PDF</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+                <a href="#tool-workspace" class="cta-button">Convert Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        
+        <!-- Tool Workspace Section -->
+        <section class="tool-workspace-section" id="tool-workspace">
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb-nav">
+                <a href="index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">PDF to Word</span>
+            </div>
+
+            <!-- Workspace Glass Card -->
+            <div class="workspace-card">
+                <h1 class="workspace-title">Convert PDF to Word DOCX</h1>
+                <p class="workspace-subtitle">Extract selectable text and layouts from PDF files into Word format. Processed entirely inside your browser.</p>
+                
+                <!-- Upload Dropzone Area -->
+                <div class="upload-area" id="dropzone">
+                    <input type="file" id="fileInput" class="file-input" accept=".pdf">
+                    <span class="upload-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    </span>
+                    <p class="upload-text-main">Drag and drop your PDF file here</p>
+                    <p class="upload-text-sub">or click the button below to select from your device</p>
+                    <button class="btn-upload" id="browseBtn">Choose PDF File</button>
+                </div>
+
+                <!-- Selected Files List -->
+                <div class="selected-files-list" id="filesList" style="display:none;">
+                    <div class="file-item">
+                        <div class="file-info">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            <span class="file-name" id="fileNameText">document.pdf</span>
+                            <span class="file-size" id="fileSizeText">(0 KB)</span>
+                        </div>
+                        <button class="btn-remove-file" id="removeFileBtn" aria-label="Remove File">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progress & Convert Action Panel -->
+                <div class="process-container" id="processPanel">
+                    <button class="btn-process" id="startProcessBtn">Convert to Word</button>
+                    <div class="progress-bar-container" id="progressBarContainer">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                    <p class="progress-status-text" id="progressStatusText">Ready for processing...</p>
+                </div>
+
+                <!-- Success / Error Outputs -->
+                <div class="status-message success" id="statusSuccess">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Conversion complete! Your Word file is ready for download.</span>
+                </div>
+                <div class="status-message error" id="statusError">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <span id="errorText">An error occurred during file extraction. Please try another PDF.</span>
+                </div>
+
+                <!-- Compiled Download Actions -->
+                <div class="action-buttons-wrap" id="actionPanel">
+                    <button class="btn-download" id="downloadBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download Word File (.docx)
+                    </button>
+                    <button class="btn-reset" id="resetBtn">Convert Another File</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="seo-content-section">
+            <div class="seo-rich-content">
+                <h2>Introduction: Why Our Browser-Based PDF to Word Converter Wins</h2>
+                <p>Welcome to the ultimate tool for modifying static documents: the Chaman Shazad PDF to Word Converter. Have you ever received a PDF contract, report, or essay that you needed to update, only to find yourself struggling with complex copy-paste errors, broken column formats, or distorted charts? Traditional software solutions often require paying for heavy desktop suites or risking your privacy on web-based services that process your files on remote databases.</p>
+                <p>Chaman Shazad Tools introduces a revolutionary, 100% browser-based PDF to Word Converter. By utilizing advanced clientside compiling libraries, our tool extracts the text layout and formatting parameters directly inside your browser container. This means your files are never transmitted to any third-party host, keeping your personal records, corporate statistics, and private documentation confidential and completely safe.</p>
+
+                <h2>12-15 Key Features of Our PDF to Word Converter</h2>
+                <div class="features-container-grid">
+                    <div class="feature-box">
+                        <h4>1. 100% Browser Processing</h4>
+                        <p>No backend servers are involved. Your document stays inside your local system sandbox during extraction.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>2. Free Unlimited Conversions</h4>
+                        <p>Perform as many document extractions as you need without encountering monthly limits or subscription walls.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>3. Preservation of Layouts</h4>
+                        <p>Text blocks, paragraphs, lists, and spacing properties are parsed and written to mimic the source design.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>4. High-Fidelity Text Extraction</h4>
+                        <p>Extract strings and clean sentences instead of dealing with scrambled letters or missing character encodings.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>5. Zero Registration Barriers</h4>
+                        <p>Start converting immediately. We do not require emails, sign-ups, or social media logins to access full features.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>6. Cross-Device Performance</h4>
+                        <p>Convert on Windows, macOS, Android, or iOS. All you need is a standard web browser to compile DOCX files.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>7. High-Speed Outputs</h4>
+                        <p>Skip the network delays. Processing occurs locally at CPU speeds, delivering files in seconds.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>8. Secure Sandbox Environment</h4>
+                        <p>Isolate your file conversion from external trackers or server-side exploits for unmatched data security.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>9. Clean DOCX Outputs</h4>
+                        <p>Outputs are compiled into standard DOCX formats, fully editable in Microsoft Word, Google Docs, or LibreOffice.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>10. Drag and Drop Support</h4>
+                        <p>Drag files from your file manager directly into the active browser zone for rapid workflows.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>11. AdSense-Friendly Layout</h4>
+                        <p>Clean, readable, content-focused sections ensure an optimal user experience that fits search criteria.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>12. No Software Downloads</h4>
+                        <p>Avoid sketchy installation wizards and system bloating. Everything runs via native browser scripting.</p>
+                    </div>
+                </div>
+
+                <h2>Key Benefits: Security, Accuracy, and Versatility</h2>
+                <p>Using client-side technology changes the way you manage digital workflows. Standard converters upload documents, leaving digital footprints that are easily indexed or compromised. With our client-side setup, sensitive folders, military-grade compliance forms, legal agreements, and fiscal accounting sheets are converted locally, giving you absolute peace of mind. Furthermore, we do not add generic watermarks to your outputs, so you get clean Word docs ready for professional use.</p>
+
+                <h2>How to Convert PDF to Word (Step-by-Step Instructions)</h2>
+                <div class="how-to-steps">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <h4>Upload PDF</h4>
+                        <p>Drag your PDF file into the glowing workspace card or click "Choose PDF File" to select from your local drive.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <h4>Trigger Extraction</h4>
+                        <p>Review the uploaded file name, and click the blue "Convert to Word" button to begin processing.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <h4>Watch Progress</h4>
+                        <p>Monitor the visual progress bar as PDF.js extracts text layouts in real-time right inside your browser window.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">04</div>
+                        <h4>Download DOCX</h4>
+                        <p>Click the green "Download Word File" button to save the editable DOCX output directly onto your storage drive.</p>
+                    </div>
+                </div>
+
+                <h2>Why Choose Our Tool Over Desktop Alternatives?</h2>
+                <p>Traditional desktop software requires licenses, installations, and system memory. Mobile equivalents are often loaded with ads or premium locks. Our tool is lightweight, open, fast, and does not require installation. It compiles files locally using the user's browser, giving you desktop-quality conversions without the overhead.</p>
+
+                <h2>Security & Privacy Assurance: Files Never Upload</h2>
+                <p>We take your privacy seriously. Since our application does not possess a backend file storage server, your records are never sent over the web. The conversion starts, runs, and finishes within your active tab session. Closing the window instantly discards the cache, making it one of the most secure tools online.</p>
+
+                <h2>Supported Formats</h2>
+                <p>Our utility reads standard <strong>PDF 1.0 to 1.7</strong> layouts and generates standard <strong>Microsoft Word Open XML (.docx)</strong> text documents, ensuring seamless editability in MS Word, Google Docs, Apple Pages, and WPS Office suites.</p>
+
+                <h2>Useful Use Cases</h2>
+                <ul>
+                    <li><strong>Academic Research:</strong> Convert research papers to edit paragraphs or add citations.</li>
+                    <li><strong>Legal Offices:</strong> Change contract formats to modify clauses or adjust terms.</li>
+                    <li><strong>HR Departments:</strong> Extract text from resumes to format candidate profiles.</li>
+                    <li><strong>Business Workflows:</strong> Update static reports, financial summaries, or product lists.</li>
+                </ul>
+
+                <h2>10-15 FAQ Section (Schema-Ready Q&As)</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How does the local client-side conversion work?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">Our tool uses PDF.js to load your PDF in browser memory, extracts the readable text characters and structural layout coordinates, and bundles them into an editable DOCX format client-side.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Are my PDF files safe on this website?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">Yes, absolutely. Because the script runs locally, no data is uploaded to our servers. Your documents remain completely secure on your own device.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can I convert password-protected PDFs?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">If a PDF is encrypted or password-protected, you will need to unlock it first. For security reasons, our tool does not bypass PDF protection protocols.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is there a file size limit for PDF to Word conversions?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">Since processing runs on your local machine, there are no strict size limits imposed by us. However, very large documents (e.g. 500+ pages) may depend on your device's available memory.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Will the layout and formatting change?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">We try to match your document's original formatting. While plain text, columns, and headings convert well, complex elements like overlapping images or dynamic forms may require minor formatting adjustments after conversion.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Do I need MS Word installed on my system?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">No. You can convert files without MS Word. The output is a standard .docx file that you can open with Google Docs, LibreOffice, or other word processors.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Does this tool support scanned image PDFs?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">This tool extracts text layers from selectable PDFs. It does not include OCR (Optical Character Recognition) for scanned images. If a PDF is a scanned image, it will extract as a page image rather than editable text.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can I use this tool offline?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">Yes. Once the page is loaded in your browser, the script runs entirely on your device, allowing you to convert files offline without internet access.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is this service free to use?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">Yes, our tool is free to use with no hidden charges, trial periods, or restrictions.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is it compatible with mobile browsers?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">Yes, the website is responsive and works on mobile Safari, Chrome, Opera, and other modern mobile browsers.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Related Tools</h2>
+                <p>Optimize your documents with our other free utilities: <a href="word-to-pdf.html">Word to PDF Converter</a>, <a href="compress-pdf.html">Compress PDF</a>, <a href="merge-pdf.html">Merge PDF Files</a>, and <a href="jpg-to-pdf.html">JPG to PDF Converter</a>.</p>
+
+                <!-- Call To Action -->
+                <div class="cta-banner-section">
+                    <h3>Ready to Merge or Compress Your Documents?</h3>
+                    <p>Access our high-performance suite to consolidate multiple reports, shrink file sizes, or export images directly to clean PDFs offline.</p>
+                    <a href="index.html#tools-grid" class="cta-button">View All Tools</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <a href="index.html" class="footer-logo">
+                    <div class="logo-icon">CS</div>
+                    <span>Chaman Shazad Tools</span>
+                </a>
+                <p class="footer-description">Maximize your administrative efficiency with Chaman Shazad Tools. Fast, reliable, and completely client-side private file converters operating right in your web browser.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3.62l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.76 0-5 2.24-5 5v1z"/></svg></a>
+                    <a href="#" class="social-icon twitter" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+                    <a href="#" class="social-icon linkedin" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="#" class="social-icon youtube" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.516 0-9.387.507a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.507 9.387.507 9.387.507s7.517 0 9.387-.507a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-col-title">Our Tools</h4>
+                <ul class="footer-links">
+                    <li class="footer-link-item"><a href="pdf-to-word.html">PDF to Word Converter</a></li>
+                    <li class="footer-link-item"><a href="word-to-pdf.html">Word to PDF Converter</a></li>
+                    <li class="footer-link-item"><a href="compress-pdf.html">Compress PDF File</a></li>
+                    <li class="footer-link-item"><a href="merge-pdf.html">Merge PDF Files</a></li>
+                    <li class="footer-link-item"><a href="jpg-to-pdf.html">JPG to PDF Converter</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-col-title">Company</h4>
+                <ul class="footer-links">
+                    <li class="footer-link-item"><a href="about.html">About Us</a></li>
+                    <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li class="footer-link-item"><a href="privacy.html">Privacy Policy</a></li>
+                    <li class="footer-link-item"><a href="disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="footerYear"></span> Chaman Shazad Tools. All rights reserved.</p>
+            <p>Built with privacy and security first.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/pdf-to-word.js"></script>
+</body>
+</html>
